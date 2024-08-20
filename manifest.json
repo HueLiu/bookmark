@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "ftab",
+  "description": "An extension for browser new tab.",
+	"permissions": ["activeTab", "storage", "unlimitedStorage", "bookmarks", "favicon"],
+	"host_permissions": ["*://*/*"],
+  "chrome_url_overrides": {
+		"newtab": "./newtab/index.html"
+	},
+  "background": {
+    "service_worker": "./background.ts"
+  },
+  "icons": {
+    "16": "icon/icon_16.png",
+    "48": "icon/icon_48.png"
+  }
+}
