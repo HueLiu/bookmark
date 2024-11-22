@@ -15,7 +15,10 @@
   "scripts": {
     "dev": "extension dev",
     "start": "extension start",
-    "build": "extension build"
+    "build": "extension build",
+    "dev-all": "extension dev --browser=all --polyfill",
+    "start-all": "extension start --browser=all --polyfill",
+    "build-all": "extension build --browser=all --polyfill"
   },
   "name": "ftab",
   "private": true,
