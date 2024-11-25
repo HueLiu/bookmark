@@ -29,21 +29,21 @@ const fetchWrapper = async (url: string, options: FetchOptions = {}) => {
 };
 
 // icon.horse API 获取 logo URL
-const getIconHorseUrl = async (url: string) => {
+const getIconHorseUrl = (url: string) => {
   const parsedUrl = new URL(url);
   const domain = parsedUrl.hostname;
   return `https://icon.horse/icon/${domain}`;
 };
 
 // Clearbit API 获取 logo URL
-const getClearbitLogoUrl = async (url: string) => {
+const getClearbitLogoUrl = (url: string) => {
   const parsedUrl = new URL(url);
   const domain = parsedUrl.hostname;
   return `https://logo.clearbit.com/${domain}`;
 };
 
 // Logo dev API 获取 logo URL
-const getLogoDevUrl = async (url: string) => {
+const getLogoDevUrl = (url: string) => {
   const parsedUrl = new URL(url);
   const domain = parsedUrl.hostname;
   return `https://img.logo.dev/${domain}?token=pk_AHdWjL1KTrSdo9LmnZMeYQ`;
@@ -53,21 +53,21 @@ const getLogoDevUrl = async (url: string) => {
 export const getLogoUrl = async (url: string) => {
   try {
     // 尝试使用 icon.horse 获取 logo
-    const iconHorseLogoUrl = await getIconHorseUrl(url);
+    const iconHorseLogoUrl = getIconHorseUrl(url);
     await fetchWrapper(iconHorseLogoUrl); // 检查是否能成功获取
     return iconHorseLogoUrl;
   } catch (error) {
     console.warn(`Icon.horse logo not found for ${url}.`);
     try {
       // 尝试使用 Clearbit 获取 logo
-      const clearbitLogoUrl = await getClearbitLogoUrl(url);
+      const clearbitLogoUrl = getClearbitLogoUrl(url);
       await fetchWrapper(clearbitLogoUrl); // 检查是否能成功获取
       return clearbitLogoUrl;
     } catch (error) {
       console.warn(`Clearbit logo not found for ${url}.`);
       try {
         // 尝试使用 Logo.dev 获取 logo
-        const logoDevLogoUrl = await getLogoDevUrl(url);
+        const logoDevLogoUrl = getLogoDevUrl(url);
         await fetchWrapper(logoDevLogoUrl); // 检查是否能成功获取
         return logoDevLogoUrl;
       } catch (error) {

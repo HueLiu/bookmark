@@ -1,6 +1,3 @@
-import { getLogoUrl } from "./newtab/lib";
-import localForage from "localforage";
-
 console.log("Welcom to FTab!");
 
 // const updateBookmarksLogo = async (
